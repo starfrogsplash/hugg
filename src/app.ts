@@ -3,7 +3,6 @@ import { json } from 'body-parser'
 import {huggRouter} from './routes/huggRouter'
 import swaggerJsdoc from "swagger-jsdoc"
 import swaggerUi from "swagger-ui-express"
-import expressPino from "express-pino-logger";
 import expressRateLimit from 'express-rate-limit';
 import helmet from "helmet";
 
@@ -42,7 +41,6 @@ const rateLimit = expressRateLimit({
 
 app.use(rateLimit)
 app.use(helmet())
-// app.use(expressPino())
 app.use(json())
 app.use(huggRouter)
 

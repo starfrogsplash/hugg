@@ -1,5 +1,5 @@
 
 ###
 #get by id
-GET http://localhost:3000/brand/2
+GET http://localhost:3000/brand/9e225078-d157-4402-8590-60df83de40d6
 
