@@ -1,0 +1,5 @@
+
+###
+#get by id
+GET http://localhost:3000/brand/2
+
