@@ -17,10 +17,10 @@ huggRouter.get('/brand/:brandId', (req, res) => {
 
     if (!cachedData) {
         try {
-            const foundLog = getByBrandId(brandId)
-            cache.set(`${brandId}`, foundLog)
-            if (foundLog) {
-                return res.status(200).json(foundLog)
+            const foundData = getByBrandId(brandId)
+            cache.set(`${brandId}`, foundData)
+            if (foundData) {
+                return res.status(200).json(foundData)
             } else {
                 return res.status(404).json('not found')
             }
@@ -40,10 +40,10 @@ huggRouter.get('/products/:brandId', async (req, res) => {
 
     if (!cachedData) {
         try {
-            const foundLog = getAllproductsByBrandId(brandId)
-            cache.set(cacheName, foundLog)
-            if (foundLog) {
-                return res.status(200).json(foundLog)
+            const foundData = getAllproductsByBrandId(brandId)
+            cache.set(cacheName, foundData)
+            if (foundData) {
+                return res.status(200).json(foundData)
             } else {
                 return res.status(404).json('not found')
             }
@@ -63,10 +63,10 @@ huggRouter.get('/product/stores/:productId', async (req, res) => {
 
     if (!cachedData) {
         try {
-            const foundLog = getAllstoresByproductId(productId)
-            cache.set(cacheName, foundLog)
-            if (foundLog) {
-                return res.status(200).json(foundLog)
+            const foundData = getAllstoresByproductId(productId)
+            cache.set(cacheName, foundData)
+            if (foundData) {
+                return res.status(200).json(foundData)
             } else {
                 return res.status(404).json('not found')
             }
@@ -87,10 +87,10 @@ huggRouter.get('/brand/stores/:brandId', async (req, res) => {
 
     if (!cachedData) {
         try {
-            const foundLog = getAllstoresByBrandId(brandId)
-            cache.set(cacheName, foundLog)
-            if (foundLog) {
-                return res.status(200).json(foundLog)
+            const foundData = getAllstoresByBrandId(brandId)
+            cache.set(cacheName, foundData)
+            if (foundData) {
+                return res.status(200).json(foundData)
             } else {
                 return res.status(404).json('not found')
             }
