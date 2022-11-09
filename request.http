@@ -1,5 +1,18 @@
 
 ###
-#get by id
+#get by  brandid
 GET http://localhost:3000/brand/9e225078-d157-4402-8590-60df83de40d6
 
+
+###
+#getproducts by brandid
+GET http://localhost:3000/products/9e225078-d157-4402-8590-60df83de40d6
+
+###
+#getstores by productid
+GET http://localhost:3000/product/stores/26f7a82a-30a8-44e4-93cb-499a256d0ce9
+
+
+###
+#getstores by brandid
+GET http://localhost:3000/brand/stores/9e225078-d157-4402-8590-60df83de40d6
