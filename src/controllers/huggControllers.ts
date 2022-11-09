@@ -33,7 +33,6 @@ const getAllstoresByBrandId = (brandId: string) => {
 
 const getAllstoresByproductId = (productId: string) => {
   const productRes: string[] | any = products.find((product: Record<string, any>) => product.id === productId)
-  console.log('productRes', productRes)
 
   if(!productRes) return `product ID:${productId} does not exist`
 
