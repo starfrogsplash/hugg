@@ -3,6 +3,9 @@
 A hugg app api to return brand, products and stores:
 TypeScript, jest, Swagger
 
+![Screenshot 2022-11-09 at 00 35 04](https://user-images.githubusercontent.com/22579826/200707949-776d2b10-76de-485f-b022-82bb7412823c.png)
+
+
 
 ## Installation
 
