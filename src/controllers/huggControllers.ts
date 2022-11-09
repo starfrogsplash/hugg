@@ -8,12 +8,12 @@ const products = data.embedded.products
 const getByBrandId = (brandId: string) => brands.find((brand: Record<string, any>) => brand.id === brandId)
 
 const getAllproductsByBrandId = (brandId: string) => {
-   const productRes = products.filter((product: Record<string, any>) => product.brand_id === brandId)
+   const foundProducts = products.filter((product: Record<string, any>) => product.brand_id === brandId)
 
     const consolidatedProductIds: string[] | any = brands?.find((brand: Record<string, any>) => brand.id === 
     brandId)?.consolidated_products
 
-    if(!consolidatedProductIds) return { products: productRes}
+    if(!consolidatedProductIds) return { products: foundProducts}
 
       const consolidatedProducts = consolidatedProductIds.reduce((acc: any[], cProduct: Record<string, any>) => {
        acc.push(...products.filter((product:Record<string, any>) => product.id === cProduct))
@@ -21,7 +21,7 @@ const getAllproductsByBrandId = (brandId: string) => {
      },[])
 
     return {
-      products: productRes,
+      products: foundProducts,
       consolidated_products: consolidatedProducts
     }
 }
@@ -32,11 +32,11 @@ const getAllstoresByBrandId = (brandId: string) => {
 }
 
 const getAllstoresByproductId = (productId: string) => {
-  const productRes: string[] | any = products.find((product: Record<string, any>) => product.id === productId)
+  const foundProducts: string[] | any = products.find((product: Record<string, any>) => product.id === productId)
 
-  if(!productRes) return `product ID:${productId} does not exist`
+  if(!foundProducts) return `product ID:${productId} does not exist`
 
-  const store = stores.filter((store: Record<string, any>) => store.brand_id === productRes.brand_id)
+  const foundStores = stores.filter((store: Record<string, any>) => store.brand_id === foundProducts.brand_id)
   const consolBrands = brands.filter((brand: Record<string, any>) => brand.consolidated_products.includes(productId))
 
   const allAccStoresIds = consolBrands.reduce((acc: any[], brand: Record<string, any>) =>{ 
@@ -46,7 +46,7 @@ const getAllstoresByproductId = (productId: string) => {
 
   const allStores = allAccStoresIds.map((storeId: Record<string, any>) => stores.find((store: Record<string, any>) => store.id === storeId))
   
-  const combined = [...store, ...allStores]
+  const combined = [...foundStores, ...allStores]
   const unique = [...new Set(combined)];
   return unique
 }

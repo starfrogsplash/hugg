@@ -9,6 +9,8 @@ import {
 
 const huggRouter = Router()
 
+huggRouter.get('/', (req, res) => res.status(200).json('hugg: v1'))
+
 huggRouter.get('/brand/:brandId', (req, res) => {
     const { brandId } = req.params
     const cachedData = cache.get(`${brandId}`)
