@@ -9,7 +9,7 @@ import {
 
 const huggRouter = Router()
 
-huggRouter.get('/', (req, res) => res.status(200).json('hugg: v1'))
+huggRouter.get('/', (req, res) => res.status(200).send('hugg: v1'))
 
 huggRouter.get('/brand/:brandId', (req, res) => {
     const { brandId } = req.params
@@ -48,8 +48,8 @@ huggRouter.get('/products/:brandId', async (req, res) => {
                 return res.status(404).json('not found')
             }
 
-        } catch (error) {
-            res.status(400).json('retrieve failed')
+        } catch (error: any) {
+            res.status(400).json(`retrieve failed: ${error?.message || 'reason unknown'}`)
         }
     }
 
@@ -71,7 +71,11 @@ huggRouter.get('/product/stores/:productId', async (req, res) => {
                 return res.status(404).json('not found')
             }
 
-        } catch (error) {
+        } catch (error: any) {
+            if (error.cause === 'NOT_FOUND') {
+                console.log('error===', error )
+                return res.status(404).json(error.message)
+            }
             res.status(400).json('retrieve failed')
         }
     }

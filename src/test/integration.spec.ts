@@ -952,8 +952,8 @@ describe('GET/', () => {
     it('should return non existent id message', async () => {
       const { body: products, status } = await request(app).get(`/product/stores/3-2021-09-12`)
 
-      expect(products).toEqual(`product ID:3-2021-09-12 does not exist`)
-      expect(status).toEqual(200)
+      expect(products).toEqual(`Product with ID: 3-2021-09-12 does not exist`)
+      expect(status).toEqual(404)
     })
 
   })
